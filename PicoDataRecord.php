@@ -46,7 +46,7 @@
 
 				case 'date':
 					foreach($val as &$val1) {
-						$val1 = strtotime(trim($val1));
+						$val1 = $this->strtotime_ex($val1);
 						if($val1) {
 							$val1 = date('Y-m-d', $val1);
 						}
@@ -55,7 +55,7 @@
 
 				case 'datetime':
 					foreach($val as &$val1) {
-						$val1 = strtotime(trim($val1));
+						$val1 = $this->strtotime_ex($val1);
 						if($val1) {
 							$val1 = date('Y-m-d H:i:s', $val1);
 						}
@@ -282,6 +282,17 @@
 			}
 
 			return $value;
+		}
+
+		public function strtotime_ex($s) {
+			$s = trim($s);
+			if(preg_match('#(\d+\.){2}\d+#', $s, $m)) {
+				$m0 = $m[0];
+				$m0 = explode('.', $m0);
+				$m0 = $m0[1].'/'.$m0[0].'/'.$m0[2];
+				$s = str_replace($m[0], $m0, $s);
+			}
+			return strtotime($s);
 		}
 
 	}
