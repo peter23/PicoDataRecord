@@ -142,7 +142,14 @@
 					foreach($val as &$val1) {
 						$val1 = trim($val1);
 					}
+					break;
 
+				case 'email':
+					foreach($val as &$val1) {
+						if(!preg_match('#^[a-zA-Z0-9_\.\-]+\@([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9]{2,8}$#', $val1)) {
+							throw new PicoDataRecordFilterException;
+						}
+					}
 					break;
 
 				default:
