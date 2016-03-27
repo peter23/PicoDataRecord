@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * PicoDataRecord filters, formats, encodes data records for web
+ *
+ * For more information @see readme.md
+ *
+ * @link https://github.com/peter23/PicoDataRecord
+ * @author i@peter23.com
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3
+ */
+
+
 	class PicoDataRecord {
 
 		public $__data;
